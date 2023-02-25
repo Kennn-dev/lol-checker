@@ -1,0 +1,10 @@
+<a routerLink="/detail/{{data.id}}">
+    <div class="flex items-center space-x-4 mx-auto w-fit border-2 rounded-lg border-gray-700 px-5 py-3 cursor-pointer">
+        <img class="w-10 h-10 rounded-full" [src]="getAvatar()" [alt]="data.name">
+        <div class="font-medium dark:text-white text-left">
+            <div>{{data.name}}</div>
+            <div class="text-sm text-gray-500 dark:text-gray-400">Level : {{data.summonerLevel}}</div>
+        </div>
+    </div>
+
+</a>

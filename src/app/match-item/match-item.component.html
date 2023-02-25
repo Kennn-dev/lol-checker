@@ -1,0 +1,72 @@
+<div class="rounded-lg relative bg-slate-900 overflow-hidden text-center border border-gray-700">
+    <div class="absolute top-0 bottom-0 w-4" [ngClass]=" {'bg-blue-500' : user?.win, 'bg-red-500' : !user?.win} "></div>
+
+    <div class="flex lg:flex-nowrap flex-wrap gap-[30px] p-5 items-center">
+        <app-head-match [match]="matchData" [user]="user"></app-head-match>
+        <div class="h-full w-1 bg-blue-500">
+
+        </div>
+        <div>
+            <div class="flex items-center gap-3">
+                <div class="inline-block ">
+                    <div class="inline-block relative">
+
+                        <img class="w-[70px] h-[70px] ring-gray-700 ring rounded-full" [src]="user?.championAvatar" [alt]="user?.championId">
+                        <span class="absolute text-sm w-[20px] h-[20px] bg-black bottom-0 right-0 ring-gray-700 ring rounded-full">{{user?.champLevel}}</span>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <div class="flex flex-col gap-3">
+                        <img class="w-7 h-7 rounded-full" [src]="user?.spell1Icon">
+                        <img class="w-7 h-7 rounded-full" [src]="user?.spell2Icon">
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <img class="w-7 h-7 rounded-full" [src]="user?.rune1">
+                        <img class="w-7 h-7 rounded-full" [src]="user?.rune2">
+                    </div>
+                </div>
+            </div>
+            <div class="font-bold text-center mt-3">
+                {{user?.championName}}
+            </div>
+        </div>
+
+        <div class="p-5 flex-initial w-[250px]">
+            <app-kda [user]="user"></app-kda>
+        </div>
+        <div class="p-5 flex-initial w-[350px] flex gap-2">
+            <div *ngIf="user?.item0 !== 0; else elseBlock" class="w-10 h-10 rounded-md overflow-hidden">
+                <img [src]="user?.item0">
+
+            </div>
+            <div *ngIf="user?.item1 !== 0; else elseBlock" class="w-10 h-10 rounded-md overflow-hidden">
+                <img [src]="user?.item1">
+            </div>
+            <div *ngIf="user?.item2 !== 0; else elseBlock" class="w-10 h-10 rounded-md overflow-hidden">
+                <img [src]="user?.item2">
+            </div>
+            <div *ngIf="user?.item3 !== 0; else elseBlock" class="w-10 h-10 rounded-md overflow-hidden">
+                <img [src]="user?.item3">
+            </div>
+            <div *ngIf="user?.item4 !== 0; else elseBlock" class="w-10 h-10 rounded-md overflow-hidden">
+                <img [src]="user?.item4">
+            </div>
+            <div *ngIf="user?.item5 !== 0; else elseBlock" class="w-10 h-10 rounded-md overflow-hidden">
+                <img [src]="user?.item5">
+            </div>
+            <div *ngIf="user?.item6 !== 0; else elseBlock" class="w-10 h-10 rounded-md overflow-hidden">
+                <img [src]="user?.item6">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<ng-template #elseBlock>
+    <div class="w-10 h-10 rounded-md bg-slate-700 overflow-hidden">
+
+    </div>
+</ng-template>

@@ -1,0 +1,51 @@
+<div class="flex h-[200px] rounded-lg overflow-hidden ">
+    <div class="flex p-3 pl-10 items-center gap-6">
+        <img *ngIf="user" class="ring-4 ring-indigo-300 w-[105px] h-[105px] rounded-full" [src]="user.avatar">
+        <div class="flex flex-col">
+            <h2 *ngIf="user" class="font-bold text-xl">{{user.name}}</h2>
+            <span *ngIf="user" class="text-gray-600 font-bold">Level {{user.summonerLevel}} </span>
+        </div>
+    </div>
+    <div class="flex-1 bg-no-repeat bg-right-top" style="box-shadow: inset 114px 1px 60px 0px #030308;background-image: url(http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Sona_0.jpg);">
+
+    </div>
+
+</div>
+<div class="px-2 lg:px-10">
+    <div class="py-5 mt-5 flex gap-7 justify-center lg:justify-start">
+
+        <div *ngFor="let rank of queues" class="rounded-lg bg-slate-900 p-5 text-center border border-gray-700">
+            <img class="w-full max-w-[200px]" [src]="rank.tierImage" [alt]="rank.tier">
+            <h1 class="font-bold text-blue-50 text-2xl">{{rank.tier}} {{rank.rank}}</h1>
+            <h2 class="font-bold text-slate-600">{{rank.queueType}}</h2>
+            <div class="flex gap-5 justify-center">
+                <div class="font-bold">
+                    <span class="font-bold text-blue-400">W </span>
+                    <span>{{rank.wins}}</span>
+                </div>
+                <div class="font-bold">
+                    <span class="font-bold text-red-400">L </span>
+                    <span>{{rank.losses}}</span>
+                </div>
+                <div class="font-bold">
+                    <span class="font-bold text-violet-400">LP </span>
+                    <span>{{rank.leaguePoints}}</span>
+                </div>
+            </div>
+
+            <div class="w-full mt-5 bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                <div class="bg-blue-600 h-2.5 rounded-full" [style.width]="(100 * rank.leaguePoints) / 100 + '%'"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="mt-5 w-full lg:w-4/5">
+        <div *ngIf="matches.length" class="flex flex-col gap-5">
+            <div *ngFor="let item of matches">
+                <app-match-item [matchData]="item" [puuid]="user?.puuid || null"></app-match-item>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+<div class="flex flex-col p-5 ">
+    <h1 class="font-bold text-xl">{{match?.info?.gameMode}}</h1>
+    <span class="text-gray-500">{{((match?.info?.gameDuration || 0) / 60) | number : '1.00-0'}}m </span>
+
+    <div class="mt-3 text-gray-400">{{user?.lane | titlecase}}</div>
+</div>
